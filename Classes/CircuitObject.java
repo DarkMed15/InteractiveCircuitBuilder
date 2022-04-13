@@ -9,14 +9,16 @@ package InteractiveCircuitBuilder;
 public class CircuitObject {
     
     private String image;
-    private double xAxis;
-    private double yAxis;
-    private boolean isConnectedLeft;
-    private boolean isConnectedRight;
+    private Node nodeRight;
+    private Node nodeLeft;
 
-    public CircuitObject(){
-        
+    public CircuitObject(){     
+        this.nodeLeft = new Node();
+        this.nodeRight = new Node();
+        nodeLeft.setId(Node.total++);
+        nodeRight.setId(Node.total++);
     }
+    
     
     public String getImage() {
         return image;
@@ -26,36 +28,22 @@ public class CircuitObject {
         this.image = image;
     }
 
-    public double getxAxis() {
-        return xAxis;
-    }
-
-    public void setxAxis(double xAxis) {
-        this.xAxis = xAxis;
-    }
-
-    public double getyAxis() {
-        return yAxis;
-    }
-
-    public void setyAxis(double yAxis) {
-        this.yAxis = yAxis;
-    }
-
-    public boolean isIsConnectedLeft() {
-        return isConnectedLeft;
-    }
-
-    public void setIsConnectedLeft(boolean isConnectedLeft) {
-        this.isConnectedLeft = isConnectedLeft;
-    }
-
-    public boolean isIsConnectedRight() {
-        return isConnectedRight;
-    }
-
-    public void setIsConnectedRight(boolean isConnectedRight) {
-        this.isConnectedRight = isConnectedRight;
+    public double getXRight(){
+        return nodeRight.getXAxis();
     }
     
+    public double getYRight(){
+        return nodeRight.getYAxis();
+    }
+    
+    public double getXLeft(){
+        return nodeLeft.getXAxis();
+    }
+    
+    public double getYLeft(){
+        return nodeLeft.getYAxis();
+    }
+        
+    
 }
+
