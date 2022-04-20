@@ -1,20 +1,21 @@
-
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
 
 import java.util.ArrayList;
 
 
-public class Node {
+public class Vertex {
     static int total = 0;
     private Integer id;
     private double XAxis;
     private double YAxis;
     private ArrayList<Integer> connectedTo = new ArrayList<>();
+    private int nbConnected = connectedTo.size();
     private boolean connected;
     
-    public Node(){}
+    public Vertex(){
+    }
     
-    public Node(Integer id, double x, double y, ArrayList<Integer> connectedTo, boolean isConnected){
+    public Vertex(Integer id, double x, double y, ArrayList<Integer> connectedTo, boolean isConnected){
         this.id = id;
         this.XAxis = x;
         this.YAxis = y;
@@ -63,4 +64,20 @@ public class Node {
         this.id = id;
     }
     
+    
+    public static int getTotal() {
+        return total;
+    }
+
+    public static void setTotal(int total) {
+        Vertex.total = total;
+    }
+
+    public int getNbConnected() {
+        return nbConnected;
+    }
+
+    public void setNbConnected(int nbConnected) {
+        this.nbConnected = nbConnected;
+    }
 }
