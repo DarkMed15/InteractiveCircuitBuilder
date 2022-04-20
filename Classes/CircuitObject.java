@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
 
 
 public class CircuitObject {
     
     private String image;
-    private Node nodeRight;
-    private Node nodeLeft;
+    private Vertex vertexRight;
+    private Vertex vertexLeft;
 
-    public CircuitObject(){     
-        this.nodeLeft = new Node();
-        this.nodeRight = new Node();
-        nodeLeft.setId(Node.total++);
-        nodeRight.setId(Node.total++);
-    }
     
+    public CircuitObject(){     
+        this.vertexLeft = new Vertex();
+        this.vertexRight = new Vertex();
+        vertexLeft.setId(Vertex.total++);
+        vertexRight.setId(Vertex.total++);
+    }    
     
     public String getImage() {
         return image;
@@ -28,22 +23,36 @@ public class CircuitObject {
         this.image = image;
     }
 
+    
     public double getXRight(){
-        return nodeRight.getXAxis();
+        return vertexRight.getXAxis();
+    }
+    
+    public void SetXRight(double x){
+        vertexRight.setXAxis(x);
     }
     
     public double getYRight(){
-        return nodeRight.getYAxis();
+        return vertexRight.getYAxis();
+    }
+    
+    public void SetYRight(double y){
+        vertexRight.setYAxis(y);
     }
     
     public double getXLeft(){
-        return nodeLeft.getXAxis();
+        return vertexLeft.getXAxis();
+    }
+    
+    public void SetXLeft(double x){
+        vertexLeft.setXAxis(x);
     }
     
     public double getYLeft(){
-        return nodeLeft.getYAxis();
+        return vertexLeft.getYAxis();
     }
-        
     
+    public void SetYLeft(double y){
+        vertexLeft.setXAxis(y);
+    }    
 }
-
