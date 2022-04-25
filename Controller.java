@@ -30,11 +30,14 @@ public class Controller{
     //Methods for popping out textboxes:
     // for error, and descriptions
     Alert alert = new Alert(Alert.AlertType.NONE);
+    
     public void onClick(){
-        //alert.setAlertType(Alert.AlertType.ERROR);
-        alert.setContentText("The circuit is not connected properly");
-        alert.show();
-        showEq.setSelected(false);
+        alert.setAlertType(Alert.AlertType.ERROR);
+        if (showEq.isSelected()){
+            alert.setContentText("The circuit is not connected properly");
+            alert.show();
+            showEq.setSelected(false);
+        }
     }
 
     
