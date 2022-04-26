@@ -1,5 +1,6 @@
 package InteractiveCircuitBuilder.Classes;
 
+import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 
 
@@ -14,8 +15,8 @@ public class CircuitObject {
     public CircuitObject(ImageView s){     
         this.nodeLeft = new CircuitNode();
         this.nodeRight = new CircuitNode();
-        nodeLeft.setId(CircuitNode.total++);
-        nodeRight.setId(CircuitNode.total++);
+        nodeLeft.setNumber(CircuitNode.total++);
+        nodeRight.setNumber(CircuitNode.total++);
         this.me = new CircuitNode();
         this.sprite = s;
     }
@@ -34,7 +35,7 @@ public class CircuitObject {
     }
     
     public void setXRight(double x){
-        vertexRight.setXAxis(x);
+        nodeRight.setXAxis(x);
     }
     
     public double getYRight(){
@@ -42,7 +43,7 @@ public class CircuitObject {
     }
     
     public void setYRight(double y){
-        vertexRight.setYAxis(y);
+        nodeRight.setYAxis(y);
     }
     
     public double getXLeft(){
@@ -50,7 +51,7 @@ public class CircuitObject {
     }
     
     public void setXLeft(double x){
-        vertexLeft.setXAxis(x);
+        nodeLeft.setXAxis(x);
     }
     
     public double getYLeft(){
@@ -58,7 +59,7 @@ public class CircuitObject {
     }
     
     public void setYLeft(double y){
-        vertexLeft.setXAxis(y);
+        nodeLeft.setXAxis(y);
     } 
     
     public CircuitNode getNode(){
