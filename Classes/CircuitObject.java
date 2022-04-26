@@ -1,19 +1,25 @@
 package InteractiveCircuitBuilder.Classes;
 
+import javafx.scene.image.ImageView;
+
 
 public class CircuitObject {
     
     private String image;
-    private Vertex vertexRight;
-    private Vertex vertexLeft;
+    private CircuitNode me;
+    private CircuitNode nodeRight;
+    private CircuitNode nodeLeft;
+    private ImageView sprite;
 
+    public CircuitObject(ImageView s){     
+        this.nodeLeft = new CircuitNode();
+        this.nodeRight = new CircuitNode();
+        nodeLeft.setId(CircuitNode.total++);
+        nodeRight.setId(CircuitNode.total++);
+        this.me = new CircuitNode();
+        this.sprite = s;
+    }
     
-    public CircuitObject(){     
-        this.vertexLeft = new Vertex();
-        this.vertexRight = new Vertex();
-        vertexLeft.setId(Vertex.total++);
-        vertexRight.setId(Vertex.total++);
-    }    
     
     public String getImage() {
         return image;
@@ -23,36 +29,25 @@ public class CircuitObject {
         this.image = image;
     }
 
-    
     public double getXRight(){
-        return vertexRight.getXAxis();
-    }
-    
-    public void SetXRight(double x){
-        vertexRight.setXAxis(x);
+        return nodeRight.getXAxis();
     }
     
     public double getYRight(){
-        return vertexRight.getYAxis();
-    }
-    
-    public void SetYRight(double y){
-        vertexRight.setYAxis(y);
+        return nodeRight.getYAxis();
     }
     
     public double getXLeft(){
-        return vertexLeft.getXAxis();
-    }
-    
-    public void SetXLeft(double x){
-        vertexLeft.setXAxis(x);
+        return nodeLeft.getXAxis();
     }
     
     public double getYLeft(){
-        return vertexLeft.getYAxis();
+        return nodeLeft.getYAxis();
     }
     
-    public void SetYLeft(double y){
-        vertexLeft.setXAxis(y);
-    }    
+    public CircuitNode getNode(){
+        return this.me;
+    }
+        
+    
 }
