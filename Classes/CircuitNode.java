@@ -1,26 +1,35 @@
 package InteractiveCircuitBuilder.Classes;
 
 import java.util.ArrayList;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 
 
-public class Vertex {
+public class CircuitNode extends Node{
     static int total = 0;
-    private Integer id;
+    private Integer number;
     private double XAxis;
     private double YAxis;
     private ArrayList<Integer> connectedTo = new ArrayList<>();
-    private int nbConnected = connectedTo.size();
     private boolean connected;
+    public boolean isSelected;
     
-    public Vertex(){
-    }
+    public CircuitNode(){}
     
-    public Vertex(Integer id, double x, double y, ArrayList<Integer> connectedTo, boolean isConnected){
-        this.id = id;
+    public CircuitNode(Integer number, double x, double y, ArrayList<Integer> connectedTo, boolean isConnected){
+        this.number = number;
         this.XAxis = x;
         this.YAxis = y;
         this.connectedTo = connectedTo;
         this.connected = isConnected;
+        this.isSelected = false;
+        
+        this.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+        this.isSelected = true;
+        });
+        this.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
+        this.isSelected = false;
+        });
     }
     
 
@@ -56,28 +65,12 @@ public class Vertex {
         this.connectedTo = connectedTo;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setId(Integer id){
-        this.id = id;
+    public void setNumber(Integer number){
+        this.number = number;
     }
     
-    
-    public static int getTotal() {
-        return total;
-    }
-
-    public static void setTotal(int total) {
-        Vertex.total = total;
-    }
-
-    public int getNbConnected() {
-        return nbConnected;
-    }
-
-    public void setNbConnected(int nbConnected) {
-        this.nbConnected = nbConnected;
-    }
 }
