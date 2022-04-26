@@ -33,20 +33,44 @@ public class CircuitObject {
         return nodeRight.getXAxis();
     }
     
+    public void setXRight(double x){
+        vertexRight.setXAxis(x);
+    }
+    
     public double getYRight(){
         return nodeRight.getYAxis();
+    }
+    
+    public void setYRight(double y){
+        vertexRight.setYAxis(y);
     }
     
     public double getXLeft(){
         return nodeLeft.getXAxis();
     }
     
+    public void setXLeft(double x){
+        vertexLeft.setXAxis(x);
+    }
+    
     public double getYLeft(){
         return nodeLeft.getYAxis();
     }
     
+    public void setYLeft(double y){
+        vertexLeft.setXAxis(y);
+    } 
+    
     public CircuitNode getNode(){
         return this.me;
+    }
+    
+    public ArrayList<Integer> getConnectedToRight(){
+        return nodeRight.getConnectedTo();
+    }
+       
+    public ArrayList<Integer> getConnectedToLeft(){
+        return nodeLeft.getConnectedTo();
     }
         
     
