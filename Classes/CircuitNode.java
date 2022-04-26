@@ -11,8 +11,10 @@ public class CircuitNode extends Node{
     private double XAxis;
     private double YAxis;
     private ArrayList<Integer> connectedTo = new ArrayList<>();
+    private int nbConnected = connectedTo.size();
     private boolean connected;
     public boolean isSelected;
+    
     
     public CircuitNode(){}
     
@@ -73,4 +75,19 @@ public class CircuitNode extends Node{
         this.number = number;
     }
     
+    public static int getTotal() {
+        return total;
+    }
+
+    public static void setTotal(int total) {
+        CircuitNode.total = total;
+    }
+
+    public int getNbConnected() {
+        return nbConnected;
+    }
+
+    public void setNbConnected(int nbConnected) {
+        this.nbConnected = nbConnected;
+    }
 }
