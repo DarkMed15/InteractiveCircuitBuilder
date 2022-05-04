@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,148 +15,40 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InteractiveCircuitBuilder.main.FXMLController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InteractiveCircuitBuilder.main.FXMLController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
             <Pane prefHeight="400.0" prefWidth="115.0" BorderPane.alignment="CENTER">
                <children>
-                  <CheckBox fx:id="showEq" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#showEquation" text="Show Equations" />
+                  <CheckBox fx:id="showEq" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onAction="#showEquation" text="Show Equations" />
                   <RadioButton fx:id="showV" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" text="Show Voltage" />
                   <RadioButton fx:id="showA" layoutX="8.0" layoutY="73.0" mnemonicParsing="false" text="Show Amps" />
                   <RadioButton fx:id="showR" layoutX="8.0" layoutY="98.0" mnemonicParsing="false" text="Show Req" />
+                  <Button fx:id="SetBat1" layoutX="78.0" layoutY="153.0" mnemonicParsing="false" onAction="#setBatValue" prefHeight="25.0" prefWidth="32.0" text="✅" textFill="#1aff00" />
+                  <Button fx:id="SetRes1" layoutX="78.0" layoutY="214.0" mnemonicParsing="false" onAction="#setRes1Value" prefHeight="25.0" prefWidth="31.0" text="✅" textFill="#00ff48" />
+                  <TextField fx:id="resistance1" layoutX="11.0" layoutY="214.0" prefHeight="25.0" prefWidth="55.0" />
+                  <TextField fx:id="batValue" layoutX="10.0" layoutY="153.0" prefHeight="25.0" prefWidth="55.0" />
+                  <TextField fx:id="resistance2" layoutX="10.0" layoutY="266.0" prefHeight="25.0" prefWidth="56.0" />
+                  <Button fx:id="SetRes2" layoutX="78.0" layoutY="266.0" mnemonicParsing="false" onAction="#setRes2Value" prefHeight="25.0" prefWidth="31.0" text="✅" textFill="#00ff15" />
+                  <MenuButton fx:id="switchState" layoutX="8.0" layoutY="311.0" mnemonicParsing="false" text="MenuButton">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#displayImage" text="open" />
+                      <MenuItem mnemonicParsing="false" onAction="#displayImage2" text="closed" />
+                    </items>
+                  </MenuButton>
+                  <Button layoutX="20.0" layoutY="355.0" mnemonicParsing="false" onAction="#info" text="need help?" />
+                  <Label layoutX="15.0" layoutY="136.0" prefHeight="17.0" prefWidth="42.0" text="Voltage" />
+                  <Label layoutX="7.0" layoutY="197.0" text="Resistance1" />
+                  <Label layoutX="5.0" layoutY="249.0" text="Resistance2" />
                </children>
             </Pane>
          </right>
-         <left>
-            <GridPane gridLinesVisible="true" prefHeight="182.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <children>
-                        <Text layoutX="21.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="battery1" fitHeight="60.0" fitWidth="82.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../battery%20image.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Text layoutX="16.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistor" wrappingWidth="68.21249771118164">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="resistor1" fitHeight="89.0" fitWidth="100.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resistor%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="resistor3" fitHeight="89.0" fitWidth="100.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resistor%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="resistor2" fitHeight="89.0" fitWidth="100.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resistor%20image.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                     <children>
-                        <Text layoutX="31.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wire">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="wire2" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire1" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire3" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire4" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire5" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire6" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire7" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire8" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire9" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="wire10" fitHeight="97.0" fitWidth="98.0" layoutX="1.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../wire%20image.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                     <children>
-                        <Text layoutX="24.0" layoutY="91.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Switch">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="switch1" fitHeight="16.0" fitWidth="98.0" layoutX="1.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../switch%20image.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-               </children>
-            </GridPane>
-         </left>
          <bottom>
             <GridPane gridLinesVisible="true" prefHeight="152.0" prefWidth="666.0" BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -193,6 +90,115 @@
                </children>
             </GridPane>
          </bottom>
+         <left>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="396.0" prefWidth="100.0">
+                     <children>
+                        <Text layoutX="16.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistor" wrappingWidth="68.21249771118164">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="resistor1" fitHeight="60.0" fitWidth="82.0" layoutX="9.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resistor%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="resistor3" fitHeight="60.0" fitWidth="82.0" layoutX="9.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resistor%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="resistor2" fitHeight="60.0" fitWidth="82.0" layoutX="9.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resistor%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="battery1" fitHeight="60.0" fitWidth="82.0" layoutX="10.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../battery%20image.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="22.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="wire9" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire2" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire1" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire3" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire4" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire5" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire6" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire7" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="wire8" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.PNG" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="32.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wire">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="switch1" fitHeight="16.0" fitWidth="98.0" layoutX="1.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../switch%20image.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="24.0" layoutY="387.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Switch">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Line endX="48.5" layoutX="54.0" layoutY="105.0" startX="-57.0" />
+                        <Line endX="6.5" endY="391.576171875" layoutX="99.0" layoutY="1.0" startX="6.4999847412109375" />
+                        <Line endX="50.5" layoutX="54.0" layoutY="205.0" startX="-57.0" />
+                        <Line endX="52.20709228515625" layoutX="54.0" layoutY="305.0" startX="-57.0" />
+                        <ImageView fx:id="wire10" fitHeight="5.0" fitWidth="98.0" layoutX="1.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../wire%20image.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
