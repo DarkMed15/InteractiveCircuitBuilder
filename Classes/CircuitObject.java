@@ -7,18 +7,25 @@ import javafx.scene.image.ImageView;
 public class CircuitObject {
     
     private String image;
-    private CircuitNode me;
     private CircuitNode nodeRight;
     private CircuitNode nodeLeft;
     private ImageView sprite;
+    public static int countCircuitObjects = 0;
 
     public CircuitObject(ImageView s){     
         this.nodeLeft = new CircuitNode();
         this.nodeRight = new CircuitNode();
         nodeLeft.setNumber(CircuitNode.total++);
         nodeRight.setNumber(CircuitNode.total++);
-        this.me = new CircuitNode();
         this.sprite = s;
+        nodeRight.getConnectedTo().add(nodeLeft.getNumber());
+        nodeLeft.getConnectedTo().add(nodeRight.getNumber());
+        countCircuitObjects++;
+        Storage.getInstance().addObj(this);
+    }
+    
+    public CircuitObject(){
+        
     }
     
     
@@ -62,9 +69,14 @@ public class CircuitObject {
         nodeLeft.setXAxis(y);
     } 
     
-    public CircuitNode getNode(){
-        return this.me;
+    public CircuitNode getNodeLeft(){
+        return this.nodeLeft;
     }
+    
+    public CircuitNode getNodeRight(){
+        return this.nodeRight;
+    }
+    
     
     public ArrayList<Integer> getConnectedToRight(){
         return nodeRight.getConnectedTo();
@@ -73,6 +85,24 @@ public class CircuitObject {
     public ArrayList<Integer> getConnectedToLeft(){
         return nodeLeft.getConnectedTo();
     }
-        
     
+    public Integer getNbRight(){
+        return nodeRight.getNumber();
+    }
+    
+    public void setNbRight(Integer nb){
+        nodeRight.setNumber(nb);
+    }
+    
+    public Integer getNbLeft(){
+        return nodeLeft.getNumber();
+    }
+        
+    public void setNbLeft(Integer nb){
+        nodeLeft.setNumber(nb);
+    }
+    
+    public ImageView getSprite(){
+        return this.sprite;
+    }
 }

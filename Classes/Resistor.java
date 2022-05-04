@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
+
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -17,15 +19,21 @@ public class Resistor extends CircuitObject{
     public static int countResistor;
     private final int MAXCOUNTRES = 10;
     
-    public Resistor(){
+    public Resistor(ImageView s){
+        super(s);
         countResistor++;
     }
     
-    public Resistor(double res, double current, double volt){
+    public Resistor(double res, double current, double volt, ImageView s){
+        super(s);
         countResistor++;
         this.resistance = res;
         this.current = current;
         this.voltage = volt;
+    }
+
+    public Resistor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public double getResistance() {

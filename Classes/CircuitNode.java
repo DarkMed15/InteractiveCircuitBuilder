@@ -10,7 +10,7 @@ public class CircuitNode extends Node{
     private Integer number;
     private double XAxis;
     private double YAxis;
-    private ArrayList<Integer> connectedTo = new ArrayList<>();
+    private ArrayList<Integer> connectedTo = new ArrayList<>();    
     private int nbConnected = connectedTo.size();
     private boolean connected;
     public boolean isSelected;
@@ -18,8 +18,8 @@ public class CircuitNode extends Node{
     
     public CircuitNode(){}
     
-    public CircuitNode(Integer number, double x, double y, ArrayList<Integer> connectedTo, boolean isConnected){
-        this.number = number;
+    public CircuitNode(Integer number, double x, double y, boolean isConnected, ArrayList<Integer> connectedTo ){
+        //this.number = number;
         this.XAxis = x;
         this.YAxis = y;
         this.connectedTo = connectedTo;
@@ -27,10 +27,10 @@ public class CircuitNode extends Node{
         this.isSelected = false;
         
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
-        this.isSelected = true;
+            this.isSelected = true;
         });
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-        this.isSelected = false;
+            this.isSelected = false;
         });
     }
     
@@ -66,7 +66,8 @@ public class CircuitNode extends Node{
     public void setConnectedTo(ArrayList<Integer> connectedTo) {
         this.connectedTo = connectedTo;
     }
-
+    
+    
     public Integer getNumber() {
         return number;
     }

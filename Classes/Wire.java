@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
+
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -17,11 +19,13 @@ public class Wire extends CircuitObject{
     public static int countWire;
     private final int MAXCOUNTWIRE = 30;
     
-    public Wire(){        
+    public Wire(ImageView s){ 
+        super(s);
         countWire++;
     }
     
-    public Wire(double length, double current){
+    public Wire(double length, double current, ImageView s){
+        super(s);
         countWire++;
         this.length = length;
         this.current = current;

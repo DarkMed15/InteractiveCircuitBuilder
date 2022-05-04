@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
+
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -15,11 +17,13 @@ public class Battery extends CircuitObject{
     public static int countBattery;
     private final int MAXCOUNTBATTERY = 1;
     
-    public Battery(){  
+    public Battery(ImageView s){  
+        super(s);
         countBattery++;
     }
     
-    public Battery(double voltage){
+    public Battery(double voltage, ImageView s){
+        super(s);
         this.voltage = voltage;
         countBattery++;
     }

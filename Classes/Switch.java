@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InteractiveCircuitBuilder;
+package InteractiveCircuitBuilder.Classes;
+
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -15,7 +17,8 @@ public class Switch extends CircuitObject{
     public static int countSwitch;
     private final int MAXCOUNTSWITCH = 5;
     
-    public Switch(){
+    public Switch(ImageView s){
+        super(s);
         countSwitch++;
     }
     
